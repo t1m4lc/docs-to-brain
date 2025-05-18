@@ -1,0 +1,10 @@
+[
+  [
+    "https://github.com/logaretm/vee-validate/tree/main/docs/src/pages/guide/composition-api",
+    "./nuxt/modules/vee-validate"
+  ],
+  [
+    "https://github.com/prazdevs/pinia-plugin-persistedstate/tree/main/docs/guide",
+    "./nuxt/modules/pinia-plugin-persistedstate"
+  ]
+]
