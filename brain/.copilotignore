@@ -47,5 +47,8 @@
 **/*.csv
 **/*.json.big
 
+# Documentation files
+**/README.md
+
 # Documentation (optional - you might want to keep this commented)
 # **/docs/**/*.md
