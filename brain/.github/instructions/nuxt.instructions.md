@@ -54,6 +54,13 @@ applyTo: "**/*.vue,**/*.ts,**/nuxt.config.*"
 - Consider selective hydration for large pages
 - Implement proper caching strategies
 
+## Data Tables
+- Always use Tanstack Table Vue with the `useVueTable` composable
+- Avoid other table libraries or custom table implementations
+- Follow the official Tanstack Table Vue documentation
+- Implement proper sorting, filtering, and pagination
+- Handle loading and error states in tables
+
 ## Examples
 
 ### Auto-imports
@@ -187,4 +194,199 @@ export const useAuthentication = () => {
     logout
   }
 }
+```
+
+### Tanstack Table Implementation
+
+```vue
+<!-- components/DataTable.vue -->
+<script setup lang="ts">
+import {
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+  type ColumnDef
+} from '@tanstack/vue-table'
+
+// Always use useVueTable from @tanstack/vue-table
+import { useVueTable } from '@tanstack/vue-table'
+
+// Define props with proper TypeScript types
+const props = defineProps<{
+  data: any[]
+  columns: ColumnDef<any, any>[]
+  initialSorting?: { id: string; desc: boolean }[]
+}>()
+
+// Create a reactive search input
+const globalFilter = ref('')
+
+// Initialize table with useVueTable
+const table = useVueTable({
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  state: {
+    get sorting() {
+      return sorting.value
+    },
+    get globalFilter() {
+      return globalFilter.value
+    }
+  },
+  onSortingChange: (updater) => {
+    sorting.value = typeof updater === 'function' ? updater(sorting.value) : updater
+  },
+  onGlobalFilterChange: (updater) => {
+    globalFilter.value = typeof updater === 'function' ? updater(globalFilter.value) : updater
+  }
+})
+
+// Table state
+const sorting = ref(props.initialSorting || [])
+</script>
+
+<template>
+  <div class="w-full">
+    <!-- Search filter -->
+    <div class="mb-4">
+      <input
+        v-model="globalFilter"
+        placeholder="Search..."
+        class="px-3 py-2 border border-gray-300 rounded-md w-full max-w-sm"
+      />
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th
+              v-for="header in table.getHeaderGroups()[0].headers"
+              :key="header.id"
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+              @click="header.column.getToggleSortingHandler()?.()"
+            >
+              <div class="flex items-center space-x-1">
+                <span>{{ flexRender(header.column.columnDef.header, header.getContext()) }}</span>
+                <span v-if="header.column.getIsSorted() === 'asc'">↑</span>
+                <span v-else-if="header.column.getIsSorted() === 'desc'">↓</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr v-for="row in table.getRowModel().rows" :key="row.id" class="hover:bg-gray-50">
+            <td
+              v-for="cell in row.getVisibleCells()"
+              :key="cell.id"
+              class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+            >
+              {{ flexRender(cell.column.columnDef.cell, cell.getContext()) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination controls -->
+    <div class="flex items-center justify-between mt-4">
+      <div class="flex items-center space-x-2">
+        <span class="text-sm text-gray-700">
+          Page {{ table.getState().pagination.pageIndex + 1 }} of {{ table.getPageCount() }}
+        </span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button
+          class="px-3 py-1 border rounded text-sm disabled:opacity-50"
+          :disabled="!table.getCanPreviousPage()"
+          @click="table.previousPage()"
+        >
+          Previous
+        </button>
+        <button
+          class="px-3 py-1 border rounded text-sm disabled:opacity-50"
+          :disabled="!table.getCanNextPage()"
+          @click="table.nextPage()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+### Usage Example
+
+```vue
+<!-- pages/users.vue -->
+<script setup lang="ts">
+import { type ColumnDef } from '@tanstack/vue-table'
+
+// Define your data type
+interface User {
+  id: string
+  name: string
+  email: string
+  role: string
+  status: 'active' | 'inactive'
+}
+
+// Define table columns
+const columns: ColumnDef<User, any>[] = [
+  {
+    accessorKey: 'name',
+    header: 'Name',
+    cell: (info) => info.getValue()
+  },
+  {
+    accessorKey: 'email',
+    header: 'Email',
+    cell: (info) => info.getValue()
+  },
+  {
+    accessorKey: 'role',
+    header: 'Role',
+    cell: (info) => info.getValue()
+  },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: (info) => (
+      <span
+        class={info.getValue() === 'active' ? 'text-green-600' : 'text-red-600'}
+      >
+        {info.getValue()}
+      </span>
+    )
+  }
+]
+
+// Fetch data
+const { data: users, pending, error } = await useFetch<User[]>('/api/users')
+</script>
+
+<template>
+  <div>
+    <h1 class="text-2xl font-bold mb-6">Users</h1>
+    
+    <div v-if="pending" class="py-10 text-center">Loading users...</div>
+    <div v-else-if="error" class="py-10 text-center text-red-600">
+      An error occurred while loading users
+    </div>
+    <DataTable v-else :data="users" :columns="columns" />
+  </div>
+</template>
 ```

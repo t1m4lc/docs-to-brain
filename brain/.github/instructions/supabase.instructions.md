@@ -64,7 +64,6 @@ applyTo: "**/*supabase*.*,**/database/**,**/db/**,**/*.sql"
 <script setup lang="ts">
 const client = useSupabaseClient()
 const user = useSupabaseUser()
-const router = useRouter()
 
 // Form state
 const email = ref('')
@@ -82,8 +81,8 @@ async function signIn() {
     
     if (error) throw error
     
-    // Redirect after successful login
-    await router.push('/dashboard')
+    // Redirect after successful login - always use navigateTo instead of router.push
+    await navigateTo('/dashboard')
   } catch (error) {
     errorMsg.value = error.message
   }
@@ -92,7 +91,8 @@ async function signIn() {
 async function signOut() {
   const { error } = await client.auth.signOut()
   if (!error) {
-    await router.push('/login')
+    // Always use navigateTo instead of router.push
+    await navigateTo('/login')
   }
 }
 </script>
@@ -105,6 +105,8 @@ async function signOut() {
 export const useTasks = () => {
   const client = useSupabaseClient<Database>()
   const user = useSupabaseUser()
+  // Use Nuxt's useDayjs composable for date handling
+  const dayjs = useDayjs()
   
   const tasks = ref<Task[]>([])
   const loading = ref(true)
@@ -124,7 +126,12 @@ export const useTasks = () => {
       
       if (err) throw err
       
-      tasks.value = data || []
+      // Process dates with dayjs
+      tasks.value = (data || []).map(task => ({
+        ...task,
+        formattedDueDate: task.due_date ? dayjs(task.due_date).format('MMM D, YYYY') : '',
+        isOverdue: task.due_date ? dayjs(task.due_date).isBefore(dayjs()) : false
+      }))
     } catch (err) {
       error.value = err.message
       console.error('Error fetching tasks:', err)
@@ -136,10 +143,16 @@ export const useTasks = () => {
   // Create a new task
   async function createTask(newTask: Omit<Task, 'id' | 'user_id'>) {
     try {
+      // Format dates with dayjs if needed
+      const taskWithFormattedDate = {
+        ...newTask,
+        due_date: newTask.due_date ? dayjs(newTask.due_date).format('YYYY-MM-DD') : null
+      }
+      
       const { data, error: err } = await client
         .from('tasks')
         .insert({
-          ...newTask,
+          ...taskWithFormattedDate,
           user_id: user.value?.id
         })
         .select()

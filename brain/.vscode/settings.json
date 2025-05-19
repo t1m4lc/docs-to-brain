@@ -1,0 +1,25 @@
+{
+  "search.exclude": {
+    "**/.github/docs/**": true,
+    "**/node_modules/**": true,
+    "**/.nuxt/**": true,
+    "**/.output/**": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.nuxt": true,
+  },
+
+  // Auto save settings
+  "files.autoSave": "onFocusChange",
+  
+  // Editor settings
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "always",
+    "source.removeUnusedImports": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2
+}

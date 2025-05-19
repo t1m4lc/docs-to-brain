@@ -1,5 +1,5 @@
 ---
-mode: 'ask'
+mode: 'agent'
 tools: ['codebase', 'file']
 description: 'Learn about patterns and best practices for a specific technology'
 ---

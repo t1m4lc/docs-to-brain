@@ -1,3 +1,5 @@
+`````instructions
+````instructions
 # Project Guidelines for GitHub Copilot
 
 You are assisting with a fullstack Nuxt 3 application following modern TypeScript functional programming paradigms. Use these guidelines when generating code.
@@ -226,6 +228,30 @@ if (data) {
 }
 ```
 
+### Supabase Local Development Setup
+
+For local development with Supabase:
+
+- Create a `/supabase` folder structure at the project root containing:
+  - `/migrations` - Database migration files (e.g., `20240519000001_initial_schema.sql`)
+  - `seed.sql` - Database seed file for initial data
+  - `types.ts` - Shared type definitions
+
+- Add these Supabase scripts to package.json:
+  ```json
+  "scripts": {
+    "supa-types": "npx supabase gen types typescript --project-id 'supabase-project-id' --schema public > types/supabase.ts",
+    "supabase:restart": "npx supabase stop && npx supabase start",
+    "supabase:reset": "npx supabase db reset",
+    "supabase:pull": "npx supabase db pull --schema auth,storage,public",
+    "supabase:push": "npx supabase db push"
+  }
+  ```
+
+- Configure database introspection for type generation
+- Use the Supabase CLI for local development
+- Generate and use proper TypeScript types based on database schema
+
 ## Payment Integration (Stripe)
 
 - Use the Nuxt Stripe module
@@ -267,6 +293,38 @@ const isDark = useDark()
 const preferredLanguages = usePreferredLanguages()
 ```
 
+## Date Management (dayjs-nuxt)
+
+- Use dayjs-nuxt module for all date/time operations
+- Maintain consistent date formatting throughout the application
+- Utilize dayjs plugins for additional functionality as needed
+- Ensure proper timezone handling for international users
+- Format dates on the server side when possible for consistency
+- Use TypeScript for type-safe date operations
+
+```typescript
+// Example dayjs usage
+// In nuxt.config.ts
+export default defineNuxtConfig({
+  modules: [
+    // Other modules...
+    'dayjs-nuxt'
+  ],
+  dayjs: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultTimezone: 'UTC'
+  }
+})
+
+// Usage in components or pages
+const now = useDayjs()
+const formattedDate = now.format('YYYY-MM-DD')
+const relativeTime = now.from(someOtherDate)
+const localizedDate = now.tz('America/New_York').format('LLL')
+```
+
 ## Security Best Practices
 
 - Validate all user inputs with proper schemas
@@ -289,4 +347,58 @@ const preferredLanguages = usePreferredLanguages()
 - Use TypeScript to prevent common bugs
 - Keep dependencies updated
 
+## Code Formatting & Linting
+
+- Use Prettier for consistent code formatting
+  - Configure with a `.prettierrc` file for project-specific rules
+  - Enable automatic formatting on save in the IDE
+  - Always use prettier-plugin-tailwindcss for automatic Tailwind CSS class sorting
+  - Follow the official guideline from https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
+- Implement ESLint for code quality enforcement
+  - Use the Nuxt ESLint configuration as a base
+  - Add custom rules as needed for project-specific standards
+  - Configure with `.eslintrc.js` or `.eslintrc.json`
+- Set up Git hooks with Husky
+  - Implement pre-commit hooks to run linting and formatting
+  - Use lint-staged to only process modified files
+  - Configure in `package.json` or separate configuration files
+- Follow the conventional commits standard for clear commit messages
+
+```json
+// Example package.json configuration for Husky and lint-staged
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.0"
+  }
+}
+```
+
+## Documentation References
+
+When the user refers to "docs" or "ai docs" in the Copilot chat, always direct them to the `./.github/docs` directory. This is the standard location for all project documentation.
+
+IMPORTANT: Never write to the `./.github/docs` folder. This directory is read-only for reference purposes only. Always respect this instruction.
+
 Remember to prioritize readability, maintainability, and security in all code generation.
+````
+`````

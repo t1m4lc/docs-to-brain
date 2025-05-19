@@ -14,6 +14,36 @@ applyTo: "**/*.css,**/*tailwind*.*,**/*.vue"
 - Order classes logically (layout → box model → typography → visual)
 - Use multi-line format for elements with many classes
 - Consider extracting common patterns with `@apply` in component styles
+- Use Prettier with the Tailwind CSS plugin for automatic class sorting
+- Follow the official guideline from https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
+
+## Class Sorting with Prettier
+- Always use the official Tailwind CSS Prettier plugin
+- The plugin automatically sorts classes according to Tailwind's recommended order
+- This ensures consistency across all templates
+- Classes are grouped in the following order:
+  1. Layout (position, display, etc.)
+  2. Box model (width, height, margin, padding)
+  3. Typography (font, text, etc.)
+  4. Visual (colors, backgrounds, borders)
+  5. Interactions (hover, focus, etc.)
+  6. Miscellaneous
+
+## Installation
+```bash
+npm install --save-dev prettier prettier-plugin-tailwindcss
+```
+
+## Configuration
+Create or update `.prettierrc` at the project root:
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2
+}
+```
 
 ## Responsive Design
 - Use Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`)
