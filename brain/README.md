@@ -30,20 +30,21 @@ The documentation is organized in a hierarchical structure:
 
 <!-- TOC_START -->
 <!-- Generated automatically by fetch.ts -->
-* **fonctionnal-programming-guide-javascript**/
-  * [ch01](fonctionnal-programming-guide-javascript/ch01.md)
-  * [ch02](fonctionnal-programming-guide-javascript/ch02.md)
-  * [ch03](fonctionnal-programming-guide-javascript/ch03.md)
-  * [ch04](fonctionnal-programming-guide-javascript/ch04.md)
-  * [ch05](fonctionnal-programming-guide-javascript/ch05.md)
-  * [ch06](fonctionnal-programming-guide-javascript/ch06.md)
-  * [ch07](fonctionnal-programming-guide-javascript/ch07.md)
-  * [ch08](fonctionnal-programming-guide-javascript/ch08.md)
-  * [ch09](fonctionnal-programming-guide-javascript/ch09.md)
-  * [ch10](fonctionnal-programming-guide-javascript/ch10.md)
-  * [ch11](fonctionnal-programming-guide-javascript/ch11.md)
-  * [ch12](fonctionnal-programming-guide-javascript/ch12.md)
-  * [ch13](fonctionnal-programming-guide-javascript/ch13.md)
+* **javascript**/
+  * **fonctionnal-programming**/
+    * [ch01](javascript/fonctionnal-programming/ch01.md)
+    * [ch02](javascript/fonctionnal-programming/ch02.md)
+    * [ch03](javascript/fonctionnal-programming/ch03.md)
+    * [ch04](javascript/fonctionnal-programming/ch04.md)
+    * [ch05](javascript/fonctionnal-programming/ch05.md)
+    * [ch06](javascript/fonctionnal-programming/ch06.md)
+    * [ch07](javascript/fonctionnal-programming/ch07.md)
+    * [ch08](javascript/fonctionnal-programming/ch08.md)
+    * [ch09](javascript/fonctionnal-programming/ch09.md)
+    * [ch10](javascript/fonctionnal-programming/ch10.md)
+    * [ch11](javascript/fonctionnal-programming/ch11.md)
+    * [ch12](javascript/fonctionnal-programming/ch12.md)
+    * [ch13](javascript/fonctionnal-programming/ch13.md)
 * **nitro**/
   * **docs**/
     * [0.index](nitro/docs/0.index.md)
@@ -350,12 +351,112 @@ The documentation is organized in a hierarchical structure:
       * **4.advanced**/
         * [1.custom-provider](nuxt/modules/images/4.advanced/1.custom-provider.md)
         * [2.static-images](nuxt/modules/images/4.advanced/2.static-images.md)
+    * **nuxt-content**/
+      * **1.getting-started**/
+        * [1.index](nuxt/modules/nuxt-content/1.getting-started/1.index.md)
+        * [2.installation](nuxt/modules/nuxt-content/1.getting-started/2.installation.md)
+        * [3.configuration](nuxt/modules/nuxt-content/1.getting-started/3.configuration.md)
+        * [4.migration](nuxt/modules/nuxt-content/1.getting-started/4.migration.md)
+      * **2.collections**/
+        * [1.define](nuxt/modules/nuxt-content/2.collections/1.define.md)
+        * [2.types](nuxt/modules/nuxt-content/2.collections/2.types.md)
+        * [3.sources](nuxt/modules/nuxt-content/2.collections/3.sources.md)
+      * **3.files**/
+        * [1.markdown](nuxt/modules/nuxt-content/3.files/1.markdown.md)
+        * [2.yaml](nuxt/modules/nuxt-content/3.files/2.yaml.md)
+        * [3.json](nuxt/modules/nuxt-content/3.files/3.json.md)
+        * [4.csv](nuxt/modules/nuxt-content/3.files/4.csv.md)
+      * **4.utils**/
+        * [1.query-collection](nuxt/modules/nuxt-content/4.utils/1.query-collection.md)
+        * [2.query-collection-navigation](nuxt/modules/nuxt-content/4.utils/2.query-collection-navigation.md)
+        * [3.query-collection-item-surroundings](nuxt/modules/nuxt-content/4.utils/3.query-collection-item-surroundings.md)
+        * [4.query-collection-search-sections](nuxt/modules/nuxt-content/4.utils/4.query-collection-search-sections.md)
+      * **5.components**/
+        * [0.content-renderer](nuxt/modules/nuxt-content/5.components/0.content-renderer.md)
+        * [1.slot](nuxt/modules/nuxt-content/5.components/1.slot.md)
+        * [2.prose](nuxt/modules/nuxt-content/5.components/2.prose.md)
+      * **6.deploy**/
+        * [1.server](nuxt/modules/nuxt-content/6.deploy/1.server.md)
+        * [2.serverless](nuxt/modules/nuxt-content/6.deploy/2.serverless.md)
+        * [3.nuxthub](nuxt/modules/nuxt-content/6.deploy/3.nuxthub.md)
+        * [4.cloudflare-pages](nuxt/modules/nuxt-content/6.deploy/4.cloudflare-pages.md)
+        * [5.vercel](nuxt/modules/nuxt-content/6.deploy/5.vercel.md)
+        * [6.netlify](nuxt/modules/nuxt-content/6.deploy/6.netlify.md)
+        * [7.aws-amplify](nuxt/modules/nuxt-content/6.deploy/7.aws-amplify.md)
+        * [8.docker](nuxt/modules/nuxt-content/6.deploy/8.docker.md)
+        * [9.static](nuxt/modules/nuxt-content/6.deploy/9.static.md)
+      * **7.advanced**/
+        * [1.fulltext-search](nuxt/modules/nuxt-content/7.advanced/1.fulltext-search.md)
+        * [2.raw-content](nuxt/modules/nuxt-content/7.advanced/2.raw-content.md)
+        * [3.database](nuxt/modules/nuxt-content/7.advanced/3.database.md)
+        * [4.tools](nuxt/modules/nuxt-content/7.advanced/4.tools.md)
+        * [5.hooks](nuxt/modules/nuxt-content/7.advanced/5.hooks.md)
+        * [6.custom-source](nuxt/modules/nuxt-content/7.advanced/6.custom-source.md)
+        * [7.llms](nuxt/modules/nuxt-content/7.advanced/7.llms.md)
+      * **8.studio**/
+        * [1.setup](nuxt/modules/nuxt-content/8.studio/1.setup.md)
+        * [2.github](nuxt/modules/nuxt-content/8.studio/2.github.md)
+        * [3.content](nuxt/modules/nuxt-content/8.studio/3.content.md)
+        * [4.medias](nuxt/modules/nuxt-content/8.studio/4.medias.md)
+        * [5.config](nuxt/modules/nuxt-content/8.studio/5.config.md)
+        * [6.debug](nuxt/modules/nuxt-content/8.studio/6.debug.md)
+    * **nuxt-fonts**/
+      * [1.installation](nuxt/modules/nuxt-fonts/1.installation.md)
+      * [2.configuration](nuxt/modules/nuxt-fonts/2.configuration.md)
+      * [3.usage](nuxt/modules/nuxt-fonts/3.usage.md)
+      * [4.providers](nuxt/modules/nuxt-fonts/4.providers.md)
+    * **nuxt-robots**/
+      * **1.getting-started**/
+        * [0.introduction](nuxt/modules/nuxt-robots/1.getting-started/0.introduction.md)
+        * [1.installation](nuxt/modules/nuxt-robots/1.getting-started/1.installation.md)
+        * [3.troubleshooting](nuxt/modules/nuxt-robots/1.getting-started/3.troubleshooting.md)
+      * **2.guides**/
+        * [1.disable-indexing](nuxt/modules/nuxt-robots/2.guides/1.disable-indexing.md)
+        * [1.disable-page-indexing](nuxt/modules/nuxt-robots/2.guides/1.disable-page-indexing.md)
+        * [1.how-it-works](nuxt/modules/nuxt-robots/2.guides/1.how-it-works.md)
+        * [1.robot-recipes](nuxt/modules/nuxt-robots/2.guides/1.robot-recipes.md)
+        * [1.robots-txt](nuxt/modules/nuxt-robots/2.guides/1.robots-txt.md)
+        * [1.yandex](nuxt/modules/nuxt-robots/2.guides/1.yandex.md)
+        * [2.route-rules](nuxt/modules/nuxt-robots/2.guides/2.route-rules.md)
+        * [3.content](nuxt/modules/nuxt-robots/2.guides/3.content.md)
+        * [3.i18n](nuxt/modules/nuxt-robots/2.guides/3.i18n.md)
+        * [3.nuxt-config](nuxt/modules/nuxt-robots/2.guides/3.nuxt-config.md)
+      * **3.api**/
+        * [0.use-robots-rule](nuxt/modules/nuxt-robots/3.api/0.use-robots-rule.md)
+        * [1.config](nuxt/modules/nuxt-robots/3.api/1.config.md)
+        * [1.nuxt-hooks](nuxt/modules/nuxt-robots/3.api/1.nuxt-hooks.md)
+      * **3.nitro-api**/
+        * [0.get-path-robot-config](nuxt/modules/nuxt-robots/3.nitro-api/0.get-path-robot-config.md)
+        * [0.get-site-robot-config](nuxt/modules/nuxt-robots/3.nitro-api/0.get-site-robot-config.md)
+        * [2.nitro-hooks](nuxt/modules/nuxt-robots/3.nitro-api/2.nitro-hooks.md)
+      * **4.releases**/
+        * [4.v5](nuxt/modules/nuxt-robots/4.releases/4.v5.md)
+        * [5.v4](nuxt/modules/nuxt-robots/4.releases/5.v4.md)
+        * [6.v3](nuxt/modules/nuxt-robots/4.releases/6.v3.md)
     * **nuxt-stripe**/
       * **playground**/
         * **components**/
         * **server**/
           * **api**/
       * [doc](nuxt/modules/nuxt-stripe/doc.md)
+    * **nuxt-tailwindcss**/
+      * **1.getting-started**/
+        * [1.installation](nuxt/modules/nuxt-tailwindcss/1.getting-started/1.installation.md)
+        * [2.module-options](nuxt/modules/nuxt-tailwindcss/1.getting-started/2.module-options.md)
+      * **2.tailwindcss**/
+        * [1.configuration](nuxt/modules/nuxt-tailwindcss/2.tailwindcss/1.configuration.md)
+        * [2.editor-support](nuxt/modules/nuxt-tailwindcss/2.tailwindcss/2.editor-support.md)
+      * **3.examples**/
+        * [1.basic](nuxt/modules/nuxt-tailwindcss/3.examples/1.basic.md)
+        * [10.module-authoring](nuxt/modules/nuxt-tailwindcss/3.examples/10.module-authoring.md)
+        * [2.dark-mode](nuxt/modules/nuxt-tailwindcss/3.examples/2.dark-mode.md)
+        * [3.content](nuxt/modules/nuxt-tailwindcss/3.examples/3.content.md)
+        * [4.nuxt-layers](nuxt/modules/nuxt-tailwindcss/3.examples/4.nuxt-layers.md)
+        * [5.tailwind-plugins](nuxt/modules/nuxt-tailwindcss/3.examples/5.tailwind-plugins.md)
+        * [6.postcss-config](nuxt/modules/nuxt-tailwindcss/3.examples/6.postcss-config.md)
+        * [7.daisyui](nuxt/modules/nuxt-tailwindcss/3.examples/7.daisyui.md)
+        * [8.flowbite](nuxt/modules/nuxt-tailwindcss/3.examples/8.flowbite.md)
+        * [9.nuxt-ui](nuxt/modules/nuxt-tailwindcss/3.examples/9.nuxt-ui.md)
     * **supabase**/
       * **1.getting-started**/
         * [1.introduction](nuxt/modules/supabase/1.getting-started/1.introduction.md)
@@ -373,6 +474,8 @@ The documentation is organized in a hierarchical structure:
         * [4.serverSupabaseUser](nuxt/modules/supabase/3.services/4.serverSupabaseUser.md)
       * [index](nuxt/modules/supabase/index.md)
     * **vee-validate**/
+    * [nuxt-dayjs](nuxt/modules/nuxt-dayjs.md)
+    * [nuxt-gtag](nuxt/modules/nuxt-gtag.md)
   * **nitro**/
     * **guide**/
       * [0.index](nuxt/nitro/guide/0.index.md)
@@ -492,6 +595,7 @@ The documentation is organized in a hierarchical structure:
     * **local-development**/
       * **cli**/
       * **testing**/
+    * **nuxt-integration**/
     * **platform**/
       * **manage-your-usage**/
       * **migrating-to-supabase**/
@@ -560,6 +664,11 @@ The documentation is organized in a hierarchical structure:
       * [index](vuejs/pinia/pinia-plugin-persistedstate/index.md)
       * [limitations](vuejs/pinia/pinia-plugin-persistedstate/limitations.md)
       * [why](vuejs/pinia/pinia-plugin-persistedstate/why.md)
+  * **tanstack-table**/
+    * **guide**/
+      * [table-state](vuejs/tanstack-table/guide/table-state.md)
+    * [README](vuejs/tanstack-table/README.md)
+    * [vue-table](vuejs/tanstack-table/vue-table.md)
 * **vueuse**/
   * **guide**/
     * [best-practice](vueuse/guide/best-practice.md)
@@ -573,7 +682,7 @@ The documentation is organized in a hierarchical structure:
 
 ## 🔄 Last Updated
 
-This documentation was last updated on May 18, 2025.
+This documentation was last updated on May 19, 2025.
 
 ## 📖 Usage
 

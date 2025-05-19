@@ -57,7 +57,7 @@ applyTo: "**/*.vue,**/*.ts,**/nuxt.config.*"
 ## Data Tables
 - Always use Tanstack Table Vue with the `useVueTable` composable
 - Avoid other table libraries or custom table implementations
-- Follow the official Tanstack Table Vue documentation
+- Follow the official Tanstack Table Vue documentation and our [internal guidelines](/brain/.github/docs/vuejs/tanstack-table)
 - Implement proper sorting, filtering, and pagination
 - Handle loading and error states in tables
 
