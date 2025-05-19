@@ -80,10 +80,10 @@ async function updateReadmeTOC() {
   
   let readmeContent = fs.readFileSync(readmePath, 'utf-8');
   
-  // Scan the brain/docs directory for content
-  const docsPath = path.join(process.cwd(), 'brain', 'docs');
+  // Scan the brain/.github/docs directory for content
+  const docsPath = path.join(process.cwd(), 'brain', '.github', 'docs');
   if (!fs.existsSync(docsPath)) {
-    console.warn('⚠️ brain/docs directory not found, skipping TOC update');
+    console.warn('⚠️ brain/.github/docs directory not found, skipping TOC update');
     return;
   }
   
@@ -147,15 +147,15 @@ async function updateReadmeTOC() {
   }
   
   fs.writeFileSync(readmePath, readmeContent);
-  console.log('🗒️ Updated Table of Contents in brain/README.md');
+  console.log('🗒️ Updated Table of Contents in brain/README.md with content from brain/.github/docs');
 }
 
 (async () => {
   for (const [url, outputPath] of resources) {
     const { kind } = parseGithubUrl(url);
     
-    // Make sure the output path is relative to brain/docs directory
-    const finalOutputPath = path.join('brain', 'docs', outputPath);
+    // Make sure the output path is relative to brain/.github/docs directory
+    const finalOutputPath = path.join('brain', '.github', 'docs', outputPath);
 
     try {
       if (kind === 'tree') {

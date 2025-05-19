@@ -25,7 +25,9 @@ docs-to-brain/
 ├── src/
 │   ├── resources.json   — List of [sourceURL, outputDir] tuples for docs to fetch
 │   └── fetch.ts         — CLI tool to pull documentation from GitHub
-├── brain/               — Documentation & Copilot customization (see brain/README.md for details)
+├── brain/               — AI brain with custom prompts and documentation
+│   └── .github/
+│       └── docs/        — Documentation & reference materials for AI tools
 └── package.json         — Project dependencies and scripts
 ```
 

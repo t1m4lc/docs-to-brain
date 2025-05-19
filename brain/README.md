@@ -8,14 +8,16 @@ This documentation is automatically generated using the fetch script in the root
 
 ```
 brain/
-├── README.md        — This file, includes a live-generated table of contents
-├── docs/            — All downloaded docs, structured by domain (Nuxt, React, etc.)
+├── README.md        — This file, includes a table of contents referencing brain/.github/docs
 ├── .github/
+│   ├── docs/        — All downloaded docs, structured by domain (Nuxt, React, etc.)
 │   ├── prompts/     — Custom Copilot prompts to use in chat
 │   ├── instructions/ — Custom Copilot instruction files
 │   └── copilot-instructions.md — Master instruction file for all contexts
 └── .copilotignore   — Specifies files to exclude from GitHub Copilot suggestions
 ```
+
+> **Note:** The documentation previously found in `brain/docs/` has been moved to `brain/.github/docs/` to improve organization and accessibility by AI assistants.
 
 ## 🗂️ Organization
 
